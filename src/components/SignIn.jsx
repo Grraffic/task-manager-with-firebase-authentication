@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { googleProvider, auth } from "../firebase";
 import { useNavigate } from "react-router";
+import { FcGoogle } from "react-icons/fc";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -37,21 +38,58 @@ const SignIn = () => {
   };
 
   return (
-    <div>
-      <h1>Sign In Page</h1>
-      <input type="email" placeholder="email..." onChange={handleEmail} />
-      <input
-        type="password"
-        placeholder="password..."
-        onChange={handlePassword}
-      />
-      <button onClick={handleSignIn}>Sign In</button>
-      {"or"}
-      <button onClick={handleGmail}>Sign In with Gmail</button>
-      {error && <p>{error}</p>}
-      <p>
-        Don&apos;t have an Account? <Link to="/signup">Sign Up</Link>
-      </p>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 ">
+      <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
+        {/* Header */}
+        <h1 className="text-3xl font-semibold text-center text-gray-700 mb-6">
+          Sign In
+        </h1>
+
+        {/* Error Message */}
+        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+
+        {/* Input Fields */}
+        <div className="space-y-4">
+          <input
+            type="email"
+            placeholder="Email"
+            onChange={handleEmail}
+            className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            onChange={handlePassword}
+            className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        {/* Buttons */}
+        <div className="mt-6 space-y-3">
+          <button
+            onClick={handleSignIn}
+            className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-300"
+          >
+            Sign In
+          </button>
+          <div className="text-center text-gray-500">or</div>
+          <button
+            onClick={handleGmail}
+            className="w-full flex items-center justify-center gap-2 bg-red-500 text-white py-2 rounded hover:bg-red-600 transition duration-300"
+          >
+            <FcGoogle size={24} />
+            <span>Sign In with Google</span>
+          </button>
+        </div>
+
+        {/* Footer */}
+        <p className="text-center text-gray-600 mt-4">
+          Don&apos;t have an account?{" "}
+          <Link to="/signup" className="text-blue-500 hover:underline">
+            Sign Up
+          </Link>
+        </p>
+      </div>
     </div>
   );
 };
