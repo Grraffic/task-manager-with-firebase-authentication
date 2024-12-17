@@ -28,21 +28,52 @@ const SignUp = () => {
   };
 
   return (
-    <div>
-      <h1>Sign Up Page</h1>
-      <input type="email" placeholder="email..." onChange={handleEmail} />
-      <input
-        type="password"
-        placeholder="password..."
-        onChange={handlePassword}
-      />
-      <button onClick={handleSignUp}>Sign Up </button>
-      {"or"}
-      <button>Sign In with Gmail</button>
-      {error && <p>{error}</p>}
-      <p>
-        Already have an account? <Link to="/signin">Sign In</Link>
-      </p>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-lg">
+        {/* Header */}
+        <h1 className="text-3xl font-bold text-center text-gray-700 mb-6">
+          Sign Up
+        </h1>
+
+        {/* Form Inputs */}
+        <div className="space-y-4">
+          <input
+            type="email"
+            placeholder="Email"
+            onChange={handleEmail}
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            onChange={handlePassword}
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          />
+          {error && <p className="text-red-500 text-sm">{error}</p>}
+        </div>
+
+        {/* Buttons */}
+        <div className="mt-6">
+          <button
+            onClick={handleSignUp}
+            className="w-full bg-blue-500 text-white font-semibold py-3 rounded-lg hover:bg-blue-600 transition duration-300"
+          >
+            Sign Up
+          </button>
+          <div className="text-center text-gray-500 my-4">or</div>
+          <button className="w-full flex items-center justify-center space-x-2 bg-red-500 text-white font-semibold py-3 rounded-lg hover:bg-red-600 transition duration-300">
+            Sign In with Gmail
+          </button>
+        </div>
+
+        {/* Already have an account */}
+        <p className="mt-4 text-center text-gray-600">
+          Already have an account?{" "}
+          <Link to="/signin" className="text-blue-500 hover:underline">
+            Sign In
+          </Link>
+        </p>
+      </div>
     </div>
   );
 };
