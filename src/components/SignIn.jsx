@@ -22,7 +22,7 @@ const SignIn = () => {
   const handleSignIn = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/");
+      navigate("/Todos");
     } catch (error) {
       setError(`error: ${error}`);
     }
@@ -54,12 +54,14 @@ const SignIn = () => {
             type="email"
             placeholder="Email"
             onChange={handleEmail}
+            required
             className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <input
             type="password"
             placeholder="Password"
             onChange={handlePassword}
+            required
             className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>

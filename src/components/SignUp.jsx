@@ -41,12 +41,14 @@ const SignUp = () => {
             type="email"
             placeholder="Email"
             onChange={handleEmail}
+            required
             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
           />
           <input
             type="password"
             placeholder="Password"
             onChange={handlePassword}
+            required
             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
           />
           {error && <p className="text-red-500 text-sm">{error}</p>}
