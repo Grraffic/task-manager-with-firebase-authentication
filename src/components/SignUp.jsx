@@ -21,6 +21,11 @@ const SignUp = () => {
   const handleSignUp = async (e) => {
     e.preventDefault;
 
+    if (!email.includes("@") || password.trim() === "") {
+      setError("Please provide a valid email and password.");
+      return;
+    }
+
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       navigate("/signin");

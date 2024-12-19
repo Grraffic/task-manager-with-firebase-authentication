@@ -21,7 +21,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route
-            path="/Todos"
+            path="/"
             element={user ? <ListTodos user={user} /> : <SignIn />}
           />
           <Route path="/signin" element={<SignIn />} />

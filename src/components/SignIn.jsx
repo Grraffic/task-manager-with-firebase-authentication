@@ -22,9 +22,14 @@ const SignIn = () => {
   const handleSignIn = async (e) => {
     e.preventDefault();
 
+    if (!email.includes("@") || password.trim() === "") {
+      setError("Please provide a valid email and password.");
+      return;
+    }
+
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/Todos");
+      navigate("/");
     } catch (error) {
       setError(`error: ${error}`);
     }
